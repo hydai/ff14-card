@@ -11,15 +11,15 @@ export function AppLayout({ header, preview, editor }: AppLayoutProps) {
     <div className="min-h-screen flex flex-col">
       {header}
 
-      <main className="flex-1 max-w-2xl mx-auto w-full px-4 sm:px-6 py-6">
-        <div className="flex flex-col gap-6">
-          {/* Preview Section */}
-          <div className="flex justify-center">
+      <main className="flex-1 w-full px-4 sm:px-6 py-6">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6">
+          {/* Preview Section - Left on desktop */}
+          <div className="flex justify-center lg:sticky lg:top-6 lg:self-start">
             {preview}
           </div>
 
-          {/* Editor Section */}
-          <div className="bg-bg-card rounded-xl p-6 shadow-lg border border-border-gold-light">
+          {/* Editor Section - Right on desktop */}
+          <div className="flex-1 bg-bg-card rounded-xl p-6 shadow-lg border border-border-gold-light">
             {editor}
           </div>
         </div>
