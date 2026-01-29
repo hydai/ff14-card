@@ -1,0 +1,64 @@
+import type { Job } from '../../types';
+import { jobsByRole, roleColors, roleNames } from '../../data/jobs';
+
+interface SubJobPickerProps {
+  selectedJobs: Job[];
+  onToggleJob: (job: Job) => void;
+}
+
+export function SubJobPicker({ selectedJobs, onToggleJob }: SubJobPickerProps) {
+  const roles = ['tank', 'healer', 'melee', 'ranged', 'magic'] as const;
+  const selectedIds = new Set(selectedJobs.map((j) => j.id));
+  const isFull = selectedJobs.length >= 4;
+
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center justify-between">
+        <h3 className="text-sm font-medium text-text-secondary">副職業</h3>
+        <span className="text-xs text-text-muted">{selectedJobs.length}/4</span>
+      </div>
+
+      <div className="space-y-3">
+        {roles.map((role) => (
+          <div key={role}>
+            <div className="flex items-center gap-2 mb-2">
+              <div
+                className="w-3 h-3 rounded-full"
+                style={{ backgroundColor: roleColors[role] }}
+              />
+              <span className="text-xs text-text-muted">{roleNames[role]}</span>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {jobsByRole[role].map((job) => {
+                const isSelected = selectedIds.has(job.id);
+                const isDisabled = !isSelected && isFull;
+
+                return (
+                  <button
+                    key={job.id}
+                    onClick={() => !isDisabled && onToggleJob(job)}
+                    disabled={isDisabled}
+                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                      isSelected
+                        ? 'text-white shadow-md'
+                        : isDisabled
+                        ? 'bg-bg-warm-gray/50 text-text-muted/50 cursor-not-allowed'
+                        : 'bg-bg-warm-gray text-text-secondary hover:bg-bg-cream'
+                    }`}
+                    style={
+                      isSelected
+                        ? { backgroundColor: roleColors[role] }
+                        : undefined
+                    }
+                  >
+                    {job.abbr}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

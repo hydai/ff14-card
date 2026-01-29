@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-accent-gold: #B8A066;
+  --color-accent-teal: #4A7C7C;
+  --color-bg-card: #F8F4EC;
+  --color-bg-cream: #F5F0E6;
+  --color-bg-warm-gray: #E8E2D8;
+  --color-border-gold: #9C8A6E;
+  --color-border-gold-dark: #6B5D4A;
+  --color-border-gold-light: #C4B08C;
+  --color-text-primary: #3D3530;
+  --color-text-secondary: #6B5D4A;
+  --color-text-muted: #8C7E6A;
+
+  /* Job Role Colors */
+  --color-role-tank: #3B5998;
+  --color-role-healer: #4A9C5D;
+  --color-role-dps: #C04040;
+  --color-role-dps-ranged: #C08040;
+  --color-role-dps-magic: #9040C0;
+
+  /* Fonts */
+  --font-display: "Cinzel", serif;
+  --font-body: "Noto Sans TC", sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--color-bg-warm-gray);
+  color: var(--color-text-primary);
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* Cropper styles */
+.reactEasyCrop_Container {
+  background-color: #1a1a1a;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-cream);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-gold);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-gold-dark);
+}
+
+/* Range input styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  background: var(--color-bg-warm-gray);
+  border-radius: 3px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  background: var(--color-accent-gold);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid var(--color-border-gold-dark);
+  transition: transform 0.15s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  background: var(--color-accent-gold);
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid var(--color-border-gold-dark);
+}
