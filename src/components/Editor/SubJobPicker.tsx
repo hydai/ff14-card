@@ -9,13 +9,13 @@ interface SubJobPickerProps {
 export function SubJobPicker({ selectedJobs, onToggleJob }: SubJobPickerProps) {
   const roles = ['tank', 'healer', 'melee', 'ranged', 'magic'] as const;
   const selectedIds = new Set(selectedJobs.map((j) => j.id));
-  const isFull = selectedJobs.length >= 4;
+  const isFull = selectedJobs.length >= 8;
 
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-medium text-text-secondary">副職業</h3>
-        <span className="text-xs text-text-muted">{selectedJobs.length}/4</span>
+        <span className="text-xs text-text-muted">{selectedJobs.length}/8</span>
       </div>
 
       <div className="space-y-3">

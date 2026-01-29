@@ -6,16 +6,16 @@ interface JobSectionProps {
 }
 
 export function JobSection({ subJobs }: JobSectionProps) {
-  const placeholders = Array(4 - subJobs.length).fill(null);
+  const placeholders = Array(8 - subJobs.length).fill(null);
 
   return (
     <div className="p-4 h-full flex flex-col">
       <h3 className="text-xs font-medium text-text-muted mb-3 uppercase tracking-wider">副職業</h3>
-      <div className="grid grid-cols-2 gap-2 flex-1 content-start">
+      <div className="grid grid-cols-4 gap-2 flex-1 content-start">
         {subJobs.map((job) => (
           <div
             key={job.id}
-            className="h-12 rounded-lg flex items-center justify-center shadow-sm border border-border-gold-light"
+            className="h-8 rounded-lg flex items-center justify-center shadow-sm border border-border-gold-light"
             style={{ backgroundColor: roleColors[job.role] }}
           >
             <span className="text-white font-bold text-sm">{job.abbr}</span>
@@ -24,7 +24,7 @@ export function JobSection({ subJobs }: JobSectionProps) {
         {placeholders.map((_, idx) => (
           <div
             key={`placeholder-${idx}`}
-            className="h-12 rounded-lg flex items-center justify-center border-2 border-dashed border-border-gold-light bg-bg-warm-gray/50"
+            className="h-8 rounded-lg flex items-center justify-center border-2 border-dashed border-border-gold-light bg-bg-warm-gray/50"
           >
             <span className="text-text-muted text-lg">+</span>
           </div>
