@@ -35,7 +35,7 @@ export function useCardState() {
   }, []);
 
   const updateSubJobs = useCallback((jobs: Job[]) => {
-    setCardData(prev => ({ ...prev, subJobs: jobs.slice(0, 8) }));
+    setCardData(prev => ({ ...prev, subJobs: jobs.slice(0, 12) }));
   }, []);
 
   const toggleSubJob = useCallback((job: Job) => {
@@ -43,7 +43,7 @@ export function useCardState() {
       const exists = prev.subJobs.some(j => j.id === job.id);
       if (exists) {
         return { ...prev, subJobs: prev.subJobs.filter(j => j.id !== job.id) };
-      } else if (prev.subJobs.length < 8) {
+      } else if (prev.subJobs.length < 12) {
         return { ...prev, subJobs: [...prev.subJobs, job] };
       }
       return prev;
