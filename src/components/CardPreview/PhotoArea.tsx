@@ -51,16 +51,19 @@ export function PhotoArea({
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
 
-      {/* Main job pixel art icon at top-right */}
+      {/* Main job pixel art icon at top-right corner */}
       {mainJob && (
         <div
-          className="absolute top-3 right-3 w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 overflow-hidden"
-          style={{ backgroundColor: roleColors[mainJob.role] }}
+          className="absolute top-0 right-0 w-28 h-28 flex items-center justify-center overflow-hidden"
+          style={{
+            background: `linear-gradient(135deg, ${roleColors[mainJob.role]}CC 0%, ${roleColors[mainJob.role]}40 70%, transparent 100%)`,
+            borderBottomLeftRadius: '100%',
+          }}
         >
           <img
             src={jobPixelIcons[mainJob.id]}
             alt={mainJob.name}
-            className="w-12 h-12 object-contain"
+            className="w-14 h-14 object-contain translate-x-3 -translate-y-3"
             style={{ imageRendering: 'pixelated' }}
           />
         </div>
