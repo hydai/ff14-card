@@ -1,5 +1,5 @@
 import type { CroppedArea, Job } from '../../types';
-import { roleColors } from '../../data/jobs';
+import { roleColors, jobPixelIcons } from '../../data/jobs';
 
 interface PhotoAreaProps {
   photoUrl: string | null;
@@ -51,13 +51,18 @@ export function PhotoArea({
       {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/60" />
 
-      {/* Main job icon at top-right */}
+      {/* Main job pixel art icon at top-right */}
       {mainJob && (
         <div
-          className="absolute top-3 right-3 w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30"
+          className="absolute top-3 right-3 w-16 h-16 rounded-full flex items-center justify-center shadow-lg border-2 border-white/30 overflow-hidden"
           style={{ backgroundColor: roleColors[mainJob.role] }}
         >
-          <span className="text-white font-bold text-lg">{mainJob.abbr}</span>
+          <img
+            src={jobPixelIcons[mainJob.id]}
+            alt={mainJob.name}
+            className="w-12 h-12 object-contain"
+            style={{ imageRendering: 'pixelated' }}
+          />
         </div>
       )}
 

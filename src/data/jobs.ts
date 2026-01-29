@@ -80,3 +80,27 @@ export const jobIcons: Record<string, string> = {
   rdm: '/icons/jobs/rdm.png',
   pct: '/icons/jobs/pct.png',
 };
+
+export const jobPixelIcons: Record<string, string> = {
+  pld: '/icons/jobs-pixel/pld.png',
+  war: '/icons/jobs-pixel/war.png',
+  drk: '/icons/jobs-pixel/drk.png',
+  gnb: '/icons/jobs-pixel/gnb.png',
+  whm: '/icons/jobs-pixel/whm.png',
+  sch: '/icons/jobs-pixel/sch.png',
+  ast: '/icons/jobs-pixel/ast.png',
+  sge: '/icons/jobs-pixel/sge.png',
+  mnk: '/icons/jobs-pixel/mnk.png',
+  drg: '/icons/jobs-pixel/drg.png',
+  nin: '/icons/jobs-pixel/nin.png',
+  sam: '/icons/jobs-pixel/sam.png',
+  rpr: '/icons/jobs-pixel/rpr.png',
+  vpr: '/icons/jobs-pixel/vpr.png',
+  brd: '/icons/jobs-pixel/brd.png',
+  mch: '/icons/jobs-pixel/mch.png',
+  dnc: '/icons/jobs-pixel/dnc.png',
+  blm: '/icons/jobs-pixel/blm.png',
+  smn: '/icons/jobs-pixel/smn.png',
+  rdm: '/icons/jobs-pixel/rdm.png',
+  pct: '/icons/jobs-pixel/pct.png',
+};

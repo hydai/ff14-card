@@ -1,4 +1,5 @@
-import type { ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
+import { CreditsModal } from './CreditsModal';
 
 interface AppLayoutProps {
   header: ReactNode;
@@ -7,6 +8,8 @@ interface AppLayoutProps {
 }
 
 export function AppLayout({ header, preview, editor }: AppLayoutProps) {
+  const [isCreditsOpen, setIsCreditsOpen] = useState(false);
+
   return (
     <div className="min-h-screen flex flex-col">
       {header}
@@ -27,9 +30,18 @@ export function AppLayout({ header, preview, editor }: AppLayoutProps) {
 
       <footer className="bg-bg-card border-t border-border-gold-light py-4 text-center">
         <p className="text-xs text-text-muted">
-          Final Fantasy XIV (c) SQUARE ENIX CO., LTD. All Rights Reserved.
+          Final Fantasy XIV © SQUARE ENIX CO., LTD. All Rights Reserved.
+          <span className="mx-2">|</span>
+          <button
+            onClick={() => setIsCreditsOpen(true)}
+            className="text-accent-gold hover:underline"
+          >
+            素材來源 / Credits
+          </button>
         </p>
       </footer>
+
+      <CreditsModal isOpen={isCreditsOpen} onClose={() => setIsCreditsOpen(false)} />
     </div>
   );
 }
