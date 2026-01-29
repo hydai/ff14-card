@@ -1,5 +1,5 @@
 import type { Job } from '../../types';
-import { jobsByRole, roleColors, roleNames } from '../../data/jobs';
+import { jobsByRole, roleColors, roleNames, jobIcons } from '../../data/jobs';
 
 interface MainJobPickerProps {
   selectedJob: Job | null;
@@ -30,10 +30,10 @@ export function MainJobPicker({ selectedJob, onJobSelect }: MainJobPickerProps) 
                   onClick={() =>
                     onJobSelect(selectedJob?.id === job.id ? null : job)
                   }
-                  className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  className={`p-1.5 rounded-lg transition-all ${
                     selectedJob?.id === job.id
-                      ? 'text-white shadow-md scale-105'
-                      : 'bg-bg-warm-gray text-text-secondary hover:bg-bg-cream'
+                      ? 'shadow-md scale-105'
+                      : 'bg-bg-warm-gray hover:bg-bg-cream'
                   }`}
                   style={
                     selectedJob?.id === job.id
@@ -41,7 +41,11 @@ export function MainJobPicker({ selectedJob, onJobSelect }: MainJobPickerProps) 
                       : undefined
                   }
                 >
-                  {job.abbr}
+                  <img
+                    src={jobIcons[job.id]}
+                    alt={job.abbr}
+                    className="w-6 h-6"
+                  />
                 </button>
               ))}
             </div>

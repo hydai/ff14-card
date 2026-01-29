@@ -1,5 +1,5 @@
 import type { Job } from '../../types';
-import { jobsByRole, roleColors, roleNames } from '../../data/jobs';
+import { jobsByRole, roleColors, roleNames, jobIcons } from '../../data/jobs';
 
 interface SubJobPickerProps {
   selectedJobs: Job[];
@@ -38,12 +38,12 @@ export function SubJobPicker({ selectedJobs, onToggleJob }: SubJobPickerProps) {
                     key={job.id}
                     onClick={() => !isDisabled && onToggleJob(job)}
                     disabled={isDisabled}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                    className={`p-1.5 rounded-lg transition-all ${
                       isSelected
-                        ? 'text-white shadow-md'
+                        ? 'shadow-md'
                         : isDisabled
-                        ? 'bg-bg-warm-gray/50 text-text-muted/50 cursor-not-allowed'
-                        : 'bg-bg-warm-gray text-text-secondary hover:bg-bg-cream'
+                        ? 'bg-bg-warm-gray/50 opacity-50 cursor-not-allowed'
+                        : 'bg-bg-warm-gray hover:bg-bg-cream'
                     }`}
                     style={
                       isSelected
@@ -51,7 +51,11 @@ export function SubJobPicker({ selectedJobs, onToggleJob }: SubJobPickerProps) {
                         : undefined
                     }
                   >
-                    {job.abbr}
+                    <img
+                      src={jobIcons[job.id]}
+                      alt={job.abbr}
+                      className="w-6 h-6"
+                    />
                   </button>
                 );
               })}

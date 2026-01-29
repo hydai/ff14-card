@@ -56,3 +56,27 @@ export const roleNames: Record<string, string> = {
   ranged: '遠敏',
   magic: '法系',
 };
+
+export const jobIcons: Record<string, string> = {
+  pld: '/icons/jobs/pld.png',
+  war: '/icons/jobs/war.png',
+  drk: '/icons/jobs/drk.png',
+  gnb: '/icons/jobs/gnb.png',
+  whm: '/icons/jobs/whm.png',
+  sch: '/icons/jobs/sch.png',
+  ast: '/icons/jobs/ast.png',
+  sge: '/icons/jobs/sge.png',
+  mnk: '/icons/jobs/mnk.png',
+  drg: '/icons/jobs/drg.png',
+  nin: '/icons/jobs/nin.png',
+  sam: '/icons/jobs/sam.png',
+  rpr: '/icons/jobs/rpr.png',
+  vpr: '/icons/jobs/vpr.png',
+  brd: '/icons/jobs/brd.png',
+  mch: '/icons/jobs/mch.png',
+  dnc: '/icons/jobs/dnc.png',
+  blm: '/icons/jobs/blm.png',
+  smn: '/icons/jobs/smn.png',
+  rdm: '/icons/jobs/rdm.png',
+  pct: '/icons/jobs/pct.png',
+};

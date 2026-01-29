@@ -1,5 +1,5 @@
 import type { Job } from '../../types';
-import { roleColors } from '../../data/jobs';
+import { roleColors, jobIcons } from '../../data/jobs';
 
 interface JobSectionProps {
   subJobs: Job[];
@@ -18,7 +18,11 @@ export function JobSection({ subJobs }: JobSectionProps) {
             className="h-8 rounded-lg flex items-center justify-center shadow-sm border border-border-gold-light"
             style={{ backgroundColor: roleColors[job.role] }}
           >
-            <span className="text-white font-bold text-sm">{job.abbr}</span>
+            <img
+              src={jobIcons[job.id]}
+              alt={job.abbr}
+              className="w-6 h-6"
+            />
           </div>
         ))}
         {placeholders.map((_, idx) => (
