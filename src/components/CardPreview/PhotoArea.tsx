@@ -31,7 +31,7 @@ export function PhotoArea({
   };
 
   return (
-    <div className="relative w-full h-[320px] overflow-hidden bg-bg-warm-gray">
+    <div className="relative w-full h-[480px] overflow-hidden bg-bg-warm-gray">
       {/* Photo background */}
       {photoUrl ? (
         <div

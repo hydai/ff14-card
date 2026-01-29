@@ -9,24 +9,24 @@ export function JobSection({ subJobs }: JobSectionProps) {
   const placeholders = Array(4 - subJobs.length).fill(null);
 
   return (
-    <div className="px-4 py-3">
-      <h3 className="text-xs font-medium text-text-muted mb-2 uppercase tracking-wider">副職業</h3>
-      <div className="flex gap-3">
+    <div className="p-4 h-full flex flex-col">
+      <h3 className="text-xs font-medium text-text-muted mb-3 uppercase tracking-wider">副職業</h3>
+      <div className="grid grid-cols-2 gap-2 flex-1 content-start">
         {subJobs.map((job) => (
           <div
             key={job.id}
-            className="w-12 h-12 rounded-lg flex items-center justify-center shadow-sm border border-border-gold-light"
+            className="h-12 rounded-lg flex items-center justify-center shadow-sm border border-border-gold-light"
             style={{ backgroundColor: roleColors[job.role] }}
           >
-            <span className="text-white font-bold text-xs">{job.abbr}</span>
+            <span className="text-white font-bold text-sm">{job.abbr}</span>
           </div>
         ))}
         {placeholders.map((_, idx) => (
           <div
             key={`placeholder-${idx}`}
-            className="w-12 h-12 rounded-lg flex items-center justify-center border-2 border-dashed border-border-gold-light bg-bg-warm-gray/50"
+            className="h-12 rounded-lg flex items-center justify-center border-2 border-dashed border-border-gold-light bg-bg-warm-gray/50"
           >
-            <span className="text-text-muted text-xl">+</span>
+            <span className="text-text-muted text-lg">+</span>
           </div>
         ))}
       </div>

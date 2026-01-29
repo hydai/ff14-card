@@ -93,7 +93,7 @@ export function PhotoEditor({
               crop={crop}
               zoom={zoom}
               rotation={rotation}
-              aspect={300 / 160}
+              aspect={600 / 480}
               onCropChange={setCrop}
               onCropComplete={handleCropComplete}
               onZoomChange={setZoom}
