@@ -19,9 +19,8 @@ export interface ServerRegion {
   dataCenters: DataCenter[];
 }
 
-export interface TimeRange {
-  start: number;
-  end: number;
+export interface TimeSlots {
+  hours: boolean[]; // 24 booleans, index = hour (0-23)
 }
 
 export interface CroppedArea {
@@ -38,8 +37,8 @@ export interface CardData {
   server: string;
   mainJob: Job | null;
   subJobs: Job[];
-  weekdayTime: TimeRange;
-  holidayTime: TimeRange;
+  weekdayTime: TimeSlots;
+  holidayTime: TimeSlots;
   introduction: string;
   photoUrl: string | null;
   croppedAreaPixels: CroppedArea | null;
@@ -52,8 +51,8 @@ export const initialCardData: CardData = {
   server: '',
   mainJob: null,
   subJobs: [],
-  weekdayTime: { start: 20, end: 24 },
-  holidayTime: { start: 10, end: 24 },
+  weekdayTime: { hours: Array(24).fill(false).map((_, i) => i >= 20) },
+  holidayTime: { hours: Array(24).fill(false).map((_, i) => i >= 10) },
   introduction: '',
   photoUrl: null,
   croppedAreaPixels: null,

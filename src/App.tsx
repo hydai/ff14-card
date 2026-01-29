@@ -20,8 +20,8 @@ function App() {
     updateServer,
     updateMainJob,
     toggleSubJob,
-    updateWeekdayTime,
-    updateHolidayTime,
+    toggleWeekdayHour,
+    toggleHolidayHour,
     updateIntroduction,
     updatePhotoUrl,
     updateCroppedAreaPixels,
@@ -79,8 +79,8 @@ function App() {
             <TimePicker
               weekdayTime={cardData.weekdayTime}
               holidayTime={cardData.holidayTime}
-              onWeekdayChange={updateWeekdayTime}
-              onHolidayChange={updateHolidayTime}
+              onWeekdayToggle={toggleWeekdayHour}
+              onHolidayToggle={toggleHolidayHour}
             />
           </div>
 

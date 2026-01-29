@@ -1,58 +1,49 @@
-import type { TimeRange } from '../../types';
+import type { TimeSlots } from '../../types';
 
 interface TimePickerProps {
-  weekdayTime: TimeRange;
-  holidayTime: TimeRange;
-  onWeekdayChange: (time: TimeRange) => void;
-  onHolidayChange: (time: TimeRange) => void;
+  weekdayTime: TimeSlots;
+  holidayTime: TimeSlots;
+  onWeekdayToggle: (hour: number) => void;
+  onHolidayToggle: (hour: number) => void;
 }
 
-function TimeRangeInput({
+function HourGrid({
   label,
-  time,
-  onChange,
+  slots,
+  onToggle,
 }: {
   label: string;
-  time: TimeRange;
-  onChange: (time: TimeRange) => void;
+  slots: TimeSlots;
+  onToggle: (hour: number) => void;
 }) {
+  const activeCount = slots.hours.filter(Boolean).length;
+
   return (
     <div className="space-y-2">
       <div className="flex items-center justify-between">
         <span className="text-xs text-text-muted">{label}</span>
         <span className="text-xs text-text-secondary">
-          {time.start}:00 - {time.end}:00
+          {activeCount} 小時
         </span>
       </div>
-      <div className="flex items-center gap-4">
-        <div className="flex-1">
-          <label className="text-[10px] text-text-muted block mb-1">開始</label>
-          <input
-            type="range"
-            min={0}
-            max={23}
-            value={time.start}
-            onChange={(e) => {
-              const start = Number(e.target.value);
-              onChange({ start, end: Math.max(start + 1, time.end) });
-            }}
-            className="w-full"
-          />
-        </div>
-        <div className="flex-1">
-          <label className="text-[10px] text-text-muted block mb-1">結束</label>
-          <input
-            type="range"
-            min={1}
-            max={24}
-            value={time.end}
-            onChange={(e) => {
-              const end = Number(e.target.value);
-              onChange({ start: Math.min(time.start, end - 1), end });
-            }}
-            className="w-full"
-          />
-        </div>
+      <div className="grid grid-cols-8 gap-1">
+        {slots.hours.map((active, hour) => (
+          <button
+            key={hour}
+            type="button"
+            onClick={() => onToggle(hour)}
+            className={`
+              w-full aspect-square text-xs font-medium rounded
+              transition-colors duration-150
+              ${active
+                ? 'bg-accent-gold text-bg-card'
+                : 'bg-bg-warm-gray text-text-muted hover:bg-bg-warm-gray/80'
+              }
+            `}
+          >
+            {hour}
+          </button>
+        ))}
       </div>
     </div>
   );
@@ -61,23 +52,23 @@ function TimeRangeInput({
 export function TimePicker({
   weekdayTime,
   holidayTime,
-  onWeekdayChange,
-  onHolidayChange,
+  onWeekdayToggle,
+  onHolidayToggle,
 }: TimePickerProps) {
   return (
     <div className="space-y-4">
       <h3 className="text-sm font-medium text-text-secondary">活躍時段</h3>
 
       <div className="space-y-4">
-        <TimeRangeInput
+        <HourGrid
           label="平日"
-          time={weekdayTime}
-          onChange={onWeekdayChange}
+          slots={weekdayTime}
+          onToggle={onWeekdayToggle}
         />
-        <TimeRangeInput
+        <HourGrid
           label="假日"
-          time={holidayTime}
-          onChange={onHolidayChange}
+          slots={holidayTime}
+          onToggle={onHolidayToggle}
         />
       </div>
     </div>

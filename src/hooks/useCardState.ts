@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import type { CardData, Job, TimeRange, CroppedArea } from '../types';
+import type { CardData, Job, CroppedArea } from '../types';
 import { initialCardData } from '../types';
 
 export function useCardState() {
@@ -50,12 +50,22 @@ export function useCardState() {
     });
   }, []);
 
-  const updateWeekdayTime = useCallback((time: TimeRange) => {
-    setCardData(prev => ({ ...prev, weekdayTime: time }));
+  const toggleWeekdayHour = useCallback((hour: number) => {
+    setCardData(prev => ({
+      ...prev,
+      weekdayTime: {
+        hours: prev.weekdayTime.hours.map((v, i) => i === hour ? !v : v)
+      }
+    }));
   }, []);
 
-  const updateHolidayTime = useCallback((time: TimeRange) => {
-    setCardData(prev => ({ ...prev, holidayTime: time }));
+  const toggleHolidayHour = useCallback((hour: number) => {
+    setCardData(prev => ({
+      ...prev,
+      holidayTime: {
+        hours: prev.holidayTime.hours.map((v, i) => i === hour ? !v : v)
+      }
+    }));
   }, []);
 
   const updateIntroduction = useCallback((intro: string) => {
@@ -79,8 +89,8 @@ export function useCardState() {
     updateMainJob,
     updateSubJobs,
     toggleSubJob,
-    updateWeekdayTime,
-    updateHolidayTime,
+    toggleWeekdayHour,
+    toggleHolidayHour,
     updateIntroduction,
     updatePhotoUrl,
     updateCroppedAreaPixels,
